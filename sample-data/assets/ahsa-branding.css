@@ -1,0 +1,657 @@
+/**
+ * AHSA — American High School Academy
+ * Unified Branding Stylesheet
+ *
+ * Color palette:
+ *   Primary navy:  #003366
+ *   Dark navy:     #002244
+ *   Gold accent:   #C8A415
+ *   Light gold:    #F5E6A3
+ *   Success green:  #28a745
+ *   Warning amber:  #ffc107
+ *   Danger red:     #dc3545
+ *   High orange:    #fd7e14
+ *   Muted text:     #666
+ *   Light bg:       #f9f9f9
+ *   Border:         #ddd
+ */
+
+:root {
+	--ahsa-navy: #003366;
+	--ahsa-navy-dark: #002244;
+	--ahsa-gold: #C8A415;
+	--ahsa-gold-light: #F5E6A3;
+	--ahsa-success: #28a745;
+	--ahsa-warning: #ffc107;
+	--ahsa-danger: #dc3545;
+	--ahsa-orange: #fd7e14;
+	--ahsa-muted: #666;
+	--ahsa-bg-light: #f9f9f9;
+	--ahsa-border: #ddd;
+	--ahsa-border-light: #eee;
+	--ahsa-white: #fff;
+	--ahsa-radius: 6px;
+	--ahsa-radius-sm: 4px;
+	--ahsa-radius-xs: 3px;
+}
+
+/* ===========================================================
+   Common elements
+   =========================================================== */
+
+.ahsa-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: var(--ahsa-radius-xs);
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--ahsa-white);
+	line-height: 1.5;
+}
+
+.ahsa-badge--primary   { background: var(--ahsa-navy);    }
+.ahsa-badge--success   { background: var(--ahsa-success);  }
+.ahsa-badge--warning   { background: var(--ahsa-warning); color: #333; }
+.ahsa-badge--danger    { background: var(--ahsa-danger);   }
+.ahsa-badge--orange    { background: var(--ahsa-orange);   }
+.ahsa-badge--muted     { background: var(--ahsa-muted);    }
+.ahsa-badge--assessed  { background: #c62828;              }
+.ahsa-badge--supporting { background: var(--ahsa-gold); color: #333; }
+
+.ahsa-table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid var(--ahsa-border);
+	margin: 12px 0;
+}
+
+.ahsa-table th {
+	background: var(--ahsa-navy);
+	color: var(--ahsa-white);
+	padding: 10px;
+	text-align: left;
+	font-weight: 600;
+}
+
+.ahsa-table th.text-center,
+.ahsa-table td.text-center {
+	text-align: center;
+}
+
+.ahsa-table td {
+	padding: 10px;
+	border-bottom: 1px solid var(--ahsa-border-light);
+}
+
+.ahsa-table tbody tr:nth-child(even) {
+	background: var(--ahsa-bg-light);
+}
+
+.ahsa-table tbody tr:hover {
+	background: #eef4fb;
+}
+
+/* ===========================================================
+   Progression enforcement notices
+   =========================================================== */
+
+.ahsa-progression-notice {
+	border-radius: var(--ahsa-radius-sm);
+	padding: 12px 16px;
+	margin: 12px 0;
+	line-height: 1.5;
+}
+
+.ahsa-progression-notice--warning {
+	background: #fff3cd;
+	border: 1px solid var(--ahsa-warning);
+	color: #856404;
+}
+
+.ahsa-progression-notice--error {
+	background: #f8d7da;
+	border: 1px solid var(--ahsa-danger);
+	color: #721c24;
+}
+
+.ahsa-progression-notice--info {
+	background: #d1ecf1;
+	border: 1px solid #17a2b8;
+	color: #0c5460;
+}
+
+/* ===========================================================
+   Parent Dashboard
+   =========================================================== */
+
+.ahsa-parent-dashboard h2 {
+	color: var(--ahsa-navy);
+	border-bottom: 2px solid var(--ahsa-gold);
+	padding-bottom: 8px;
+	margin-bottom: 16px;
+}
+
+.ahsa-student-card {
+	background: var(--ahsa-bg-light);
+	border: 1px solid var(--ahsa-border);
+	border-radius: var(--ahsa-radius);
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.ahsa-student-card h3 {
+	margin-top: 0;
+	color: var(--ahsa-navy);
+}
+
+.ahsa-progress-track {
+	background: #e9ecef;
+	border-radius: var(--ahsa-radius-sm);
+	overflow: hidden;
+	height: 20px;
+}
+
+.ahsa-progress-fill {
+	height: 100%;
+	text-align: center;
+	color: var(--ahsa-white);
+	font-size: 12px;
+	line-height: 20px;
+	transition: width 0.4s ease;
+}
+
+.ahsa-progress-fill--on-track  { background: var(--ahsa-success); }
+.ahsa-progress-fill--behind    { background: var(--ahsa-warning); }
+.ahsa-progress-fill--at-risk   { background: var(--ahsa-danger);  }
+
+.ahsa-teacher-note {
+	background: var(--ahsa-white);
+	border: 1px solid #e2e2e2;
+	border-radius: var(--ahsa-radius-sm);
+	padding: 12px;
+	margin-bottom: 10px;
+}
+
+.ahsa-teacher-note__meta {
+	font-size: 12px;
+	color: var(--ahsa-muted);
+	margin-bottom: 6px;
+}
+
+.ahsa-teacher-notes-section {
+	margin-top: 20px;
+}
+
+/* ===========================================================
+   Rubric display  — [ahsa_course_rubric] shortcode
+   =========================================================== */
+
+.ahsa-rubric {
+	margin: 20px 0;
+}
+
+.ahsa-rubric h3 {
+	color: var(--ahsa-navy);
+	margin-bottom: 10px;
+}
+
+.ahsa-rubric .ahsa-table th:last-child {
+	text-align: center;
+	width: 100px;
+}
+
+.ahsa-rubric .ahsa-table td:last-child {
+	text-align: center;
+	font-weight: 600;
+}
+
+.ahsa-rubric .ahsa-table td:first-child {
+	font-weight: 600;
+}
+
+/* ===========================================================
+   Standards alignment — [ahsa_standards_alignment] shortcode
+   =========================================================== */
+
+.ahsa-standards-alignment {
+	margin: 20px 0;
+}
+
+.ahsa-standards-alignment h3 {
+	color: var(--ahsa-navy);
+	margin-bottom: 10px;
+}
+
+/* ===========================================================
+   Exam security — risk level badges & session list
+   =========================================================== */
+
+.ahsa-risk-low      { color: var(--ahsa-success); font-weight: 600; }
+.ahsa-risk-moderate  { color: var(--ahsa-warning); font-weight: 600; }
+.ahsa-risk-high      { color: var(--ahsa-orange);  font-weight: 600; }
+.ahsa-risk-critical  { color: var(--ahsa-danger);  font-weight: 600; }
+
+/* Badge-style risk levels (for session tables) */
+.ahsa-badge.ahsa-risk-low,
+.ahsa-badge.ahsa-risk-moderate,
+.ahsa-badge.ahsa-risk-high,
+.ahsa-badge.ahsa-risk-critical {
+	color: #fff;
+}
+.ahsa-badge.ahsa-risk-low      { background: var(--ahsa-success); }
+.ahsa-badge.ahsa-risk-moderate  { background: var(--ahsa-warning); color: #333; }
+.ahsa-badge.ahsa-risk-high      { background: var(--ahsa-orange); }
+.ahsa-badge.ahsa-risk-critical  { background: var(--ahsa-danger); }
+
+/* Admin tab content spacing */
+.ahsa-admin-tab-content { margin-top: 20px; }
+
+.ahsa-exam-stats {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+	margin: 16px 0;
+}
+
+.ahsa-exam-stat {
+	flex: 1 1 120px;
+	background: var(--ahsa-bg-light);
+	border: 1px solid var(--ahsa-border);
+	border-radius: var(--ahsa-radius);
+	padding: 16px;
+	text-align: center;
+}
+
+.ahsa-exam-stat__value {
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.ahsa-exam-stat__label {
+	font-size: 13px;
+	color: var(--ahsa-muted);
+	margin-top: 4px;
+}
+
+/* ===========================================================
+   Transcript
+   =========================================================== */
+
+.ahsa-transcript {
+	max-width: 900px;
+}
+
+.ahsa-transcript__header {
+	text-align: center;
+	margin-bottom: 24px;
+	border-bottom: 3px double var(--ahsa-navy);
+	padding-bottom: 16px;
+}
+
+.ahsa-transcript__header h2 {
+	margin-bottom: 4px;
+}
+
+.ahsa-transcript__header h3 {
+	font-variant: small-caps;
+	letter-spacing: 2px;
+	margin-top: 12px;
+}
+
+.ahsa-transcript__student-info {
+	margin-bottom: 24px;
+}
+
+.ahsa-transcript__student-info .ahsa-table td {
+	padding: 6px 10px;
+	border-bottom: 1px solid var(--ahsa-border-light);
+}
+
+.ahsa-transcript__year {
+	margin-bottom: 28px;
+	page-break-inside: avoid;
+}
+
+.ahsa-transcript__year h4 {
+	border-bottom: 2px solid var(--ahsa-gold);
+	padding-bottom: 4px;
+	margin-bottom: 12px;
+}
+
+.ahsa-transcript__year h5 {
+	color: var(--ahsa-muted);
+	margin: 10px 0 6px;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.ahsa-transcript__year-summary {
+	margin-top: 8px;
+}
+
+.ahsa-transcript__year-summary .ahsa-table {
+	border: none;
+}
+
+.ahsa-transcript__year-summary .ahsa-table td {
+	background: var(--ahsa-bg-light);
+	padding: 6px 10px;
+	font-size: 13px;
+}
+
+.ahsa-transcript__cumulative {
+	margin: 32px 0;
+	padding: 16px;
+	border: 2px solid var(--ahsa-navy);
+	border-radius: var(--ahsa-radius);
+	background: #f0f4f8;
+}
+
+.ahsa-transcript__grading-scale {
+	margin: 24px 0;
+}
+
+.ahsa-transcript__grading-scale .ahsa-table td,
+.ahsa-transcript__grading-scale .ahsa-table th {
+	padding: 4px 10px;
+	font-size: 12px;
+}
+
+.ahsa-transcript__footer {
+	margin-top: 32px;
+	border-top: 1px solid var(--ahsa-border);
+	padding-top: 16px;
+}
+
+.ahsa-transcript__signatures {
+	width: 100%;
+	margin-top: 40px;
+}
+
+.ahsa-transcript__signatures td {
+	padding: 0 24px 0 0;
+	vertical-align: bottom;
+	width: 33%;
+}
+
+.ahsa-transcript__sig-line {
+	margin-bottom: 4px;
+	font-size: 11px;
+}
+
+/* ===========================================================
+   Student Dashboard
+   =========================================================== */
+
+.ahsa-student-dashboard {
+	max-width: 960px;
+}
+
+.ahsa-student-dashboard h2 {
+	color: var(--ahsa-navy);
+	border-bottom: 2px solid var(--ahsa-gold);
+	padding-bottom: 8px;
+}
+
+.ahsa-dashboard-stats {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+	margin: 20px 0;
+}
+
+.ahsa-dashboard-stat {
+	flex: 1 1 140px;
+	background: var(--ahsa-bg-light);
+	border: 1px solid var(--ahsa-border);
+	border-radius: var(--ahsa-radius);
+	padding: 16px;
+	text-align: center;
+}
+
+.ahsa-dashboard-stat__value {
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--ahsa-navy);
+}
+
+.ahsa-dashboard-stat__label {
+	font-size: 12px;
+	color: var(--ahsa-muted);
+	margin-top: 4px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.ahsa-course-card {
+	background: var(--ahsa-white);
+	border: 1px solid var(--ahsa-border);
+	border-radius: var(--ahsa-radius);
+	padding: 16px;
+	margin-bottom: 12px;
+}
+
+.ahsa-course-card__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.ahsa-course-card__title {
+	font-weight: 600;
+	color: var(--ahsa-navy);
+}
+
+/* ===========================================================
+   Admin-area overrides (loaded only on AHSA admin pages)
+   =========================================================== */
+
+body.toplevel_page_ahsa-rubrics .wrap h1,
+body.toplevel_page_ahsa-standards .wrap h1,
+body.toplevel_page_ahsa-exam-security .wrap h1,
+body.lifterlms_page_ahsa-rubrics .wrap h1,
+body.lifterlms_page_ahsa-standards .wrap h1,
+body.lifterlms_page_ahsa-exam-security .wrap h1 {
+	color: var(--ahsa-navy);
+}
+
+/* Admin tables */
+.ahsa-admin-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.ahsa-admin-table th {
+	text-align: left;
+	padding: 8px 10px;
+	background: var(--ahsa-bg-light);
+	border-bottom: 2px solid var(--ahsa-border);
+}
+
+.ahsa-admin-table td {
+	padding: 8px 10px;
+	border-bottom: 1px solid var(--ahsa-border-light);
+}
+
+.ahsa-admin-table tbody tr:hover {
+	background: #eef4fb;
+}
+
+/* Admin forms */
+.ahsa-form-table th {
+	padding: 12px 10px 12px 0;
+	vertical-align: top;
+}
+
+.ahsa-form-table td {
+	padding: 12px 0;
+}
+
+/* ===========================================================
+   WP Login / Registration branding
+   =========================================================== */
+
+body.login #login h1 a {
+	background-image: none;
+	text-indent: 0;
+	width: auto;
+	height: auto;
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--ahsa-navy);
+}
+
+body.login #login h1 a::after {
+	content: "American High School Academy";
+}
+
+body.login #loginform {
+	border-top: 3px solid var(--ahsa-navy);
+}
+
+body.login .button-primary {
+	background: var(--ahsa-navy) !important;
+	border-color: var(--ahsa-navy-dark) !important;
+}
+
+body.login .button-primary:hover {
+	background: var(--ahsa-navy-dark) !important;
+}
+
+/* ===========================================================
+   Utility classes
+   =========================================================== */
+
+.ahsa-text-navy   { color: var(--ahsa-navy);   }
+.ahsa-text-gold   { color: var(--ahsa-gold);   }
+.ahsa-text-success { color: var(--ahsa-success); }
+.ahsa-text-warning { color: var(--ahsa-warning); }
+.ahsa-text-danger  { color: var(--ahsa-danger);  }
+.ahsa-text-muted   { color: var(--ahsa-muted);   }
+
+.ahsa-bg-navy   { background-color: var(--ahsa-navy);   }
+.ahsa-bg-gold   { background-color: var(--ahsa-gold);   }
+.ahsa-bg-light  { background-color: var(--ahsa-bg-light); }
+
+.ahsa-mt-0 { margin-top: 0; }
+.ahsa-mb-0 { margin-bottom: 0; }
+.ahsa-mb-1 { margin-bottom: 10px; }
+.ahsa-mb-2 { margin-bottom: 20px; }
+.ahsa-p-1  { padding: 12px; }
+.ahsa-p-2  { padding: 20px; }
+.ahsa-text-center { text-align: center; }
+
+/* ===========================================================
+   Student card (parent dashboard)
+   =========================================================== */
+
+.ahsa-student-card {
+	background: var(--ahsa-bg-light, #f9f9f9);
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.ahsa-student-card > h3 {
+	margin-top: 0;
+}
+
+/* ===========================================================
+   Section heading
+   =========================================================== */
+
+.ahsa-section-heading {
+	margin-top: 20px;
+}
+
+/* ===========================================================
+   Teacher note cards
+   =========================================================== */
+
+.ahsa-note {
+	background: #fff;
+	border: 1px solid #e2e2e2;
+	border-radius: 4px;
+	padding: 12px;
+	margin-bottom: 10px;
+}
+
+.ahsa-note__meta {
+	font-size: 12px;
+	color: #666;
+	margin-bottom: 6px;
+}
+
+/* ===========================================================
+   Rubric shortcode styling
+   =========================================================== */
+
+.ahsa-rubric {
+	margin: 20px 0;
+}
+
+.ahsa-rubric > h3 {
+	margin-bottom: 10px;
+}
+
+.ahsa-rubric__table thead th {
+	background: var(--ahsa-navy);
+	color: #fff;
+	padding: 10px;
+}
+
+.ahsa-rubric__category {
+	font-weight: 600;
+}
+
+.ahsa-rubric__weight {
+	font-weight: 600;
+	width: 100px;
+}
+
+/* ===========================================================
+   Progression notice — default warning style
+   =========================================================== */
+
+.ahsa-progression-notice {
+	background: #fff3cd;
+	border: 1px solid var(--ahsa-warning);
+	border-radius: 4px;
+	padding: 12px 16px;
+	margin: 12px 0;
+	color: #856404;
+}
+
+.ahsa-progression-notice--error {
+	background: #f8d7da;
+	border-color: var(--ahsa-danger);
+	color: #842029;
+}
+
+.ahsa-progression-notice--info {
+	background: #d1ecf1;
+	border-color: #0dcaf0;
+	color: #055160;
+}
+
+/* ===========================================================
+   Print styles
+   =========================================================== */
+
+@media print {
+	.ahsa-table th {
+		background: #eee !important;
+		color: #000 !important;
+		-webkit-print-color-adjust: exact;
+	}
+	.ahsa-badge {
+		border: 1px solid #000;
+		color: #000 !important;
+		background: transparent !important;
+	}
+}

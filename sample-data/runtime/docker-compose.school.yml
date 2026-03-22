@@ -1,0 +1,55 @@
+services:
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: "${AHSA_DB_NAME:-wordpress}"
+      MARIADB_USER: "${AHSA_DB_USER:-wordpress}"
+      MARIADB_PASSWORD: "${AHSA_DB_PASSWORD:-wordpress}"
+      MARIADB_ROOT_PASSWORD: "${AHSA_DB_ROOT_PASSWORD:-root}"
+    volumes:
+      - school_db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  wordpress:
+    image: wordpress:6.6-php8.2-apache
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    ports:
+      - "${AHSA_PORT:-8080}:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: "${AHSA_DB_USER:-wordpress}"
+      WORDPRESS_DB_PASSWORD: "${AHSA_DB_PASSWORD:-wordpress}"
+      WORDPRESS_DB_NAME: "${AHSA_DB_NAME:-wordpress}"
+    volumes:
+      - school_wp_data:/var/www/html
+      - ../../:/var/www/html/wp-content/plugins/lifterlms
+
+  wpcli:
+    image: wordpress:cli-php8.2
+    depends_on:
+      db:
+        condition: service_healthy
+    user: "33:33"
+    working_dir: /var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: "${AHSA_DB_USER:-wordpress}"
+      WORDPRESS_DB_PASSWORD: "${AHSA_DB_PASSWORD:-wordpress}"
+      WORDPRESS_DB_NAME: "${AHSA_DB_NAME:-wordpress}"
+    volumes:
+      - school_wp_data:/var/www/html
+      - ../../:/var/www/html/wp-content/plugins/lifterlms
+    entrypoint: ["wp"]
+
+volumes:
+  school_db_data:
+  school_wp_data:

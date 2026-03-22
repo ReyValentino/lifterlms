@@ -269,7 +269,9 @@ class LLMS_Loader {
 		require_once LLMS_PLUGIN_DIR . 'includes/class.llms.comments.php';
 		require_once LLMS_PLUGIN_DIR . 'includes/class.llms.date.php';
 		require_once LLMS_PLUGIN_DIR . 'includes/class.llms.install.php';
-		include_once LLMS_PLUGIN_DIR . 'includes/class.llms.l10n.frontend.php';
+		if ( is_readable( LLMS_PLUGIN_DIR . 'includes/class.llms.l10n.frontend.php' ) ) {
+			include_once LLMS_PLUGIN_DIR . 'includes/class.llms.l10n.frontend.php';
+		}
 		require_once LLMS_PLUGIN_DIR . 'includes/class.llms.nav.menus.php';
 		require_once LLMS_PLUGIN_DIR . 'includes/class.llms.oembed.php';
 		require_once LLMS_PLUGIN_DIR . 'includes/class.llms.playnice.php';
